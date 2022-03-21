@@ -2,9 +2,9 @@
   "name": "api-login",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Maryucha M. Mariani",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -18,7 +18,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "compodoc": "npx compodoc -p tsconfig.doc.json -n \"LOGIN 1.0 Documentation Technical\" --theme postmark"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -49,7 +50,8 @@
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
     "tsconfig-paths": "^3.10.1",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "@compodoc/compodoc": "^1.1.18"
   },
   "jest": {
     "moduleFileExtensions": [
