@@ -69,6 +69,16 @@ $ npm run compodoc
 
 
 ---
+
+## Paths
+- register - [Link](http://localhost:3000/users)
+- addAdmin - [Link](http://localhost:3000/users) need a token auth Bearer
+- me - [Link](http://localhost:3000/auth/me) need a token auth Bearer
+- list - [Link](http://localhost:3000/users)
+
+
+
+---
 ## Stay in touch
 
 - Author - [Maryucha M Mariani](https://maryucha.dev/)
