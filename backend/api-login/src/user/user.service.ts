@@ -1,6 +1,7 @@
 import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UserListItens } from './dto/list-itens-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserRole } from './dto/UserRole';
 import { User } from './entities/user.entity';
@@ -14,12 +15,11 @@ export class UserService {
     private userRepository: UserRepository,
   ) {}
 
-  
-  async createAdminUser(createUserDto: CreateUserDto): Promise<User> {
+  async createUser(createUserDto: CreateUserDto): Promise<User> {
     if (createUserDto.password != createUserDto.passwordConfirmation) {
       throw new UnprocessableEntityException('As senhas não conferem');
     } else {
-      return this.userRepository.createUser(createUserDto, UserRole.ADMIN);
+      return this.userRepository.createUser(createUserDto, UserRole.USER);
     }
   }
 
@@ -35,7 +35,7 @@ export class UserService {
     return this.userRepository.update(id, updateUserDto);
   }
 
-  remove(id: string) {
-    return this.userRepository.delete(id);
+  remove(id: string){
+    return this.userRepository.softDelete(id);
   }
 }

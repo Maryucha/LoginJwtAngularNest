@@ -1,4 +1,4 @@
-<div class="containter">
+<div class="container">
     <h2 class="title is-3 has-text-centered is-uppercase p-4">List Users</h2>
     <table class="table is-hoverable is-fullwidth">
         <thead>
@@ -18,15 +18,18 @@
                 <td>{{item.status}}</td>
                 <td>{{item.createdAt | date:'d/LLL/Y'}}</td>
                 <td>{{item.updatedAt | date:'d/LLL/Y'}}</td>
-                <td>
+                <td class="controls" *ngIf="item.id">
                     <button class="button is-success" type="submit">
                         <i class="material-icons">edit</i>
                         Editar</button>
-                    <button class="button is-danger" type="submit">
+                    <button class="button is-danger" type="submit" (click)="remove(item.id)">
                         <i class="material-icons">delete</i>Excluir</button>
                 </td>
             </tr>
         </tbody>
     </table>
+    
 </div>
+<a class="button is-danger" href="/">
+    <i class="material-icons">logout</i>Logout</a>
 

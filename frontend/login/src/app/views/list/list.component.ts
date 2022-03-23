@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/services/models/user.model';
+import { UserListItens } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -9,14 +9,18 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class ListComponent implements OnInit {
 
-  public userList: User[] = [];
+  public userList: UserListItens[] = [];
 
   constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
-    this.userService.listAllUsers().subscribe((x) =>{
+ async ngOnInit(): Promise<void> {
+   await this.userService.listAllUsers().subscribe((x) =>{
       this.userList = x
     });
+  }
+
+  remove(id:string) {
+    this.userService.removeUser(id).subscribe((x) =>{});
   }
 
 }

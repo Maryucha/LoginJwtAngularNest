@@ -14,13 +14,13 @@ export class User extends BaseEntity {
   @Column({ nullable: false, type: 'varchar', length: 200 })
   name: string;
 
-  @Column({ nullable: false, type: 'varchar', length: 20 })
+  @Column({ nullable: true, type: 'varchar', length: 20 })
   role: string;
 
   @Column({ nullable: false, default: true })
   status: boolean;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false, length: 100})
   password: string;
 
   @Column({ nullable: false })
@@ -37,6 +37,9 @@ export class User extends BaseEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt?: Date;
 
   async checkPassword(password: string): Promise<boolean> {
     const hash = await bcrypt.hash(password, this.salt);

@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  urlApiAuth: 'http://localhost:3000/auth',
+  urlApi: 'http://localhost:3000'
 };

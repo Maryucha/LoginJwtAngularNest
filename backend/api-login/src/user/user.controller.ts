@@ -1,10 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, ValidationPipe } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
+import { User } from './entities/user.entity';
 
 @ApiTags('users')
 @Controller('users')
@@ -14,9 +15,8 @@ export class UserController {
 
   @Post()
   @UseGuards(AuthGuard())
-  async create(@Body() createUserDto: CreateUserDto) {
-    
-    return this.userService.createAdminUser(createUserDto);
+  async createAdmin(@Body() createUserDto: CreateUserDto) {
+    return this.userService.createUser(createUserDto);
   }
 
   @Get()
@@ -35,9 +35,8 @@ export class UserController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id:string) {
     return this.userService.remove(id);
   }
 
-  
 }

@@ -10,7 +10,7 @@ import { ListComponent } from './list/list.component';
 @NgModule({
   declarations: [
     LoginComponent,
-    ListComponent
+    ListComponent,
   ],
   imports: [
     CommonModule,

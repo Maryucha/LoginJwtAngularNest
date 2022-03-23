@@ -1,2 +1,77 @@
-<p>login works!</p>
-<a href="/list">ir</a>
+<div class="container">
+    <mat-tab-group mat-align-tabs="center" class="mat-elevation-z4">
+
+        <!-- LOGIN -->
+        <mat-tab label="LOGIN">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="field">
+                    <p class="control has-icons-left">
+                        <input class="input" type="email" placeholder="Email">
+                        <span class="icon is-small is-left">
+                            <i class="material-icons">email</i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control has-icons-left">
+                        <input class="input" type="password" placeholder="Password">
+                        <span class="icon is-small is-left">
+                            <i class="material-icons">lock</i>
+                        </span>
+                    </p>
+                </div>
+                <button type="submit" class="button is-primary">LOGIN</button>
+            </form>
+        </mat-tab>
+
+        <!-- CADASTRO -->
+        <mat-tab label="CADASTRAR">
+            <form [formGroup]="userForm" (ngSubmit)="salvar()">
+                <div class="field">
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input" formControlName="nameControl" type="text" placeholder="Username" required>
+                      <span class="icon is-small is-left">
+                        <i class="material-icons">person</i>
+                      </span>
+                    </div>
+                    <p  *ngIf="userForm.get('nameControl')?.errors &&
+                    userForm.get('nameControl')?.touched" class="help is-success">This username is available</p>
+                  </div>
+                  
+                  <div class="field">
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input" formControlName="emailControl" type="email" placeholder="example@mail.com" required>
+                      <span class="icon is-small is-left">
+                        <i class="material-icons">email</i>
+                      </span>
+                    </div>
+                    <p *ngIf="userForm.get('emailControl')?.errors?.['email'] &&
+                    userForm.get('emailControl')?.touched" class="help is-danger">This email is invalid</p>
+                  </div>
+
+                  <div class="field">
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input" formControlName="passwordControl" type="text" placeholder="Please enter you password" required>
+                      <span class="icon is-small is-left">
+                        <i class="material-icons">lock</i>
+                      </span>
+                    </div>
+                    <p *ngIf="userForm.get('passwordControl')?.errors &&
+                    userForm.get('passwordControl')?.touched" class="help is-danger">Was password not confered</p>
+                  </div>
+
+                  <div class="field">
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input" formControlName="passwordConfirmationControl" type="text" placeholder="Please comfirm password">
+                      <span class="icon is-small is-left">
+                        <i class="material-icons">lock</i>
+                      </span>
+                    </div>
+                    <p *ngIf="userForm.get('passwordControl') === userForm.get('passwordConfirmationControl')" class="help is-danger">Was password not confered</p>
+                  </div>
+                  
+                <button type="submit" class="button is-primary">SIGN UP</button>
+            </form>
+        </mat-tab>
+    </mat-tab-group>
+</div>

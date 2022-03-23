@@ -7,9 +7,12 @@ import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
 import { UserRole } from "./dto/UserRole";
 import { CredentialsDto } from "src/auth/CredentialsDto";
+import { UserListItens } from "./dto/list-itens-user.dto";
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
+
+  
   async createUser(
     createUserDto: CreateUserDto,
     role: UserRole,

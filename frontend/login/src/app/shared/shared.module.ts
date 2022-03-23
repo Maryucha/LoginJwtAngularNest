@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import {MatTabsModule} from '@angular/material/tabs';
 
 /**
  * This class represents a Shered module
@@ -19,14 +20,16 @@ import { UserService } from './services/user.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatTabsModule
   ],
   exports: [
     ErrorComponent,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    MatTabsModule
   ],
   providers: [
     UserService,AuthService
