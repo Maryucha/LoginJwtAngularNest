@@ -6,7 +6,7 @@
             <form [formGroup]="loginForm" (ngSubmit)="login()">
                 <div class="field">
                     <p class="control has-icons-left">
-                        <input class="input" type="email" placeholder="Email">
+                      <input class="input" formControlName="emailControl" type="email" placeholder="example@mail.com" required>
                         <span class="icon is-small is-left">
                             <i class="material-icons">email</i>
                         </span>
@@ -14,7 +14,7 @@
                 </div>
                 <div class="field">
                     <p class="control has-icons-left">
-                        <input class="input" type="password" placeholder="Password">
+                      <input class="input" formControlName="passwordControl" type="text" placeholder="Please enter you password" required>
                         <span class="icon is-small is-left">
                             <i class="material-icons">lock</i>
                         </span>
@@ -70,7 +70,7 @@
                     <p *ngIf="userForm.get('passwordControl') === userForm.get('passwordConfirmationControl')" class="help is-danger">Was password not confered</p>
                   </div>
                   
-                <button type="submit" class="button is-primary">SIGN UP</button>
+                <button type="submit" class="button is-primary" [disabled]="!userForm.valid">SIGN UP</button>
             </form>
         </mat-tab>
     </mat-tab-group>

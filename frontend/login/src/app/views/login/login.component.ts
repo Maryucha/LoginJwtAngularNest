@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { UserCreation } from 'src/app/shared/models/user.model';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   public loginForm!: FormGroup;
 
   constructor(
-    //private authService: AuthService,
+    private authService: AuthService,
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router
@@ -37,20 +38,26 @@ export class LoginComponent implements OnInit {
   }
 
   salvar() {
-    if(this.userForm.valid){
-       this.userService.createUser({
+    if (this.userForm.valid) {
+      this.userService.createUser({
         name: this.userForm.get('nameControl')?.value,
         email: this.userForm.get('emailControl')?.value,
         password: this.userForm.get('passwordControl')?.value,
         passwordConfirmation: this.userForm.get('passwordConfirmationControl')?.value,
-       }).pipe(
-        tap(() => this.router.navigate([]))
-      ).subscribe();
+      }).pipe(
+        tap(() => this.router.navigate(['']))
+      ).subscribe()
     }
   }
 
-  login(){
-    this.router.navigate(['list'])
+  login() {
+    if (this.userForm.valid) {
+      this.authService.login({
+        email: this.userForm.get('emailControl')?.value,
+        password: this.userForm.get('passwordControl')?.value,
+      }).pipe(
+        tap(() => this.router.navigate(['list']))
+      ).subscribe()
+    }
   }
-
 }

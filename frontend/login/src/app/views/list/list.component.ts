@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserListItens } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -11,7 +12,7 @@ export class ListComponent implements OnInit {
 
   public userList: UserListItens[] = [];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
  async ngOnInit(): Promise<void> {
    await this.userService.listAllUsers().subscribe((x) =>{
@@ -21,6 +22,11 @@ export class ListComponent implements OnInit {
 
   remove(id:string) {
     this.userService.removeUser(id).subscribe((x) =>{});
+  }
+
+  logOut() {
+    localStorage.setItem('token','');
+    this.router.navigate(['']);
   }
 
 }
