@@ -49,7 +49,7 @@ export class UserService {
        duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'
      })),
      catchError(e => {
-       this.snackbar.open(`User could not be created, due to: ${e.error.message}`, 'Close', {
+       this.snackbar.open(`User could not be remove, due to: ${e.error.message}`, 'Close', {
          duration: 5000, horizontalPosition: 'right', verticalPosition: 'top'
        })
        return throwError(e);
