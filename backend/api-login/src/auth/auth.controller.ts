@@ -16,7 +16,6 @@ export class AuthController {
   async signUp(
     @Body(ValidationPipe) createUserDto: CreateUserDto,
   ): Promise<{ message: string }> {
-    console.log('entrei');
     await this.authService.signUp(createUserDto);
     return {
       message: 'Cadastro realizado com sucesso',
@@ -26,7 +25,9 @@ export class AuthController {
   async signIn(
     @Body(ValidationPipe) credentiaslsDto: CredentialsDto,
   ): Promise<{ token: string }> {
+    console.log('Login realizado com sucesso!')
     return await this.authService.signIn(credentiaslsDto);
+    
   }
 
   @Get('/me')

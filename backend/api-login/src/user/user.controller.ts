@@ -5,13 +5,11 @@ import { UpdateUserDto } from './dto/update-user.dto';
 
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
-import { User } from './entities/user.entity';
 
 @ApiTags('users')
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
-
 
   @Post()
   @UseGuards(AuthGuard())
@@ -30,11 +28,13 @@ export class UserController {
   }
 
   @Patch(':id')
+  @UseGuards(AuthGuard())
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(id, updateUserDto);
   }
 
   @Delete(':id')
+  @UseGuards(AuthGuard())
   remove(@Param('id') id:string) {
     return this.userService.remove(id);
   }

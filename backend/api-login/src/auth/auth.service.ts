@@ -22,21 +22,25 @@ export class AuthService {
       throw new UnprocessableEntityException('As senhas não conferem');
     } else {
       const user: UserListItens = createUserDto;
-      return await this.userRepository.createUser(user, UserRole.ADMIN);
+      console.log('cadastrado com realizado com sucesso');
+      return await this.userRepository.createUser(user, UserRole.USER);
     }
   }
   
   async signIn(credentialsDto: CredentialsDto) {
     const user = await this.userRepository.checkCredentials(credentialsDto);
 
-    if (user === null) {
-      throw new UnauthorizedException('Credenciais inválidas');
+    if (user.email === null && user.email !== credentialsDto.email) {
+      throw new UnauthorizedException('Email inválido!');
+    }
+    if(user.password === null && user.password !== credentialsDto.password){
+      throw new UnauthorizedException('Problema com a senha!');
     }
 
     const jwtPayload = {
       id: user.id,
     };
-    const token = await this.jwtService.sign(jwtPayload);
+    const token = await this.jwtService.signAsync(jwtPayload);
     console.log('login realizado com sucesso');
     return { token };
   }

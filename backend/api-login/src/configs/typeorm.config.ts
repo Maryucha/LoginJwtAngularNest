@@ -10,4 +10,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   database: 'db-login',
   entities: [__dirname + '/../**/*.entity.{js,ts}'],
   synchronize: true,
-};
+  "migrations": ["dist/migrations/*{.ts,.js}"],
+  "migrationsTableName": "migrations_history",
+  "migrationsRun": true,
+}

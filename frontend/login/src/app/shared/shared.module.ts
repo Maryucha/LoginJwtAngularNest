@@ -14,7 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
  */
 @NgModule({
   declarations: [
-    ErrorComponent
+    ErrorComponent,
   ],
   imports: [
     CommonModule,
@@ -32,7 +32,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    MatTabsModule
+    MatTabsModule,
   ],
   providers: [
     UserService,AuthService
