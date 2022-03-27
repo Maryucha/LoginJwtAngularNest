@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-white" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="https://maryucha.dev" target="_blank">
             <img src="../../../../assets/logo.png">
@@ -13,15 +13,18 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item">
-                Cadastro
+            <a class="navbar-item"(click)="novo()">
+                Novo Usuário
             </a>
+            <a class="navbar-item" (click)="list()">
+                List
+            </a>              
         </div>
 
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-light is-primary" (click)="logOut()">
+                    <a class="button is-light is-danger" (click)="logOut()">
                         <span class="icon"><i class="material-icons">logout</i></span>
                     </a>
                 </div>
@@ -29,37 +32,21 @@
         </div>
     </div>
 </nav>
+
 <section class="main-content columns is-fullheight">
-
-    <aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">
-        <p class="menu-label is-hidden-touch">Navigation</p>
-        <ul class="menu-list">
-            <li>
-                <a href="#" class="">
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="#" class="">
-                    About
-                </a>
-            </li>
-        </ul>
-    </aside>
-
     <div class="container column is-10">
         <div class="section">
-
             <div class="card">
                 <div class="card-content">
-                    <div class="content">
+                    <div class="content" *ngIf="varList">
                         <app-list></app-list>
+                    </div>
+                    <div class="content" *ngIf="varCreate">
+                        <app-create-user-form></app-create-user-form>
                     </div>
                 </div>
             </div>
             <br />
-
         </div>
     </div>
-
 </section>

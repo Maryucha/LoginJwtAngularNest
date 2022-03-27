@@ -22,6 +22,8 @@ export class CreateUserDto {
         message: 'O nome deve ter menos de 200 caracteres',
       })
       name: string;
+
+      photo:string;
     
       @IsNotEmpty({
         message: 'Informe uma senha',

@@ -22,7 +22,7 @@ export class AuthService {
       throw new UnprocessableEntityException('As senhas não conferem');
     } else {
       const user: UserListItens = createUserDto;
-      console.log('cadastrado com realizado com sucesso');
+      console.log('cadastrado com realizado com sucesso', user);
       return await this.userRepository.createUser(user, UserRole.USER);
     }
   }

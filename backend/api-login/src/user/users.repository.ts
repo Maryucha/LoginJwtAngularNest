@@ -16,12 +16,13 @@ export class UserRepository extends Repository<User> {
     createUserDto: CreateUserDto,
     role: UserRole,
   ): Promise<User> {
-    const { email, name, password } = createUserDto;
+    const { email, name, password, photo } = createUserDto;
 
     const user = this.create();
     user.email = email;
     user.name = name;
     user.role = role;
+    user.photo = photo;
     user.status = true;
     user.confirmationToken = crypto.randomBytes(32).toString('hex');
     user.salt = await bcrypt.genSalt();

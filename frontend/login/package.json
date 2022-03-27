@@ -1,12 +1,16 @@
 {
   "name": "login",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Maryucha M. Mariani",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "compodoc": "npx compodoc -p tsconfig.doc.json -n \"LOGIN 1.0 Documentation Technical\" --theme postmark"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +25,7 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "@auth0/angular-jwt": "^5.0.2",
+    "@compodoc/compodoc": "^1.1.19",
     "bulma": "^0.9.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

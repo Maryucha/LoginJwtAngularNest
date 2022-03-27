@@ -31,7 +31,7 @@ export class UserService {
 
   createUser(user: UserCreation): Observable<UserCreation> {
     return this.http.post<User>(`${this.endpointAdm}/${this.controllerAdm}`, user).pipe(
-      tap((user) => this.snackbar.open(`Usuário cadastrado com sucesso! ${user.name}`,'Close',{
+      tap((userTemp: UserCreation) => this.snackbar.open(`Usuário cadastrado com sucesso! ${userTemp.name}`,'Close',{
        duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'
      })),
      catchError(e => {

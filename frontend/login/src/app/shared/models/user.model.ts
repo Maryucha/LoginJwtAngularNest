@@ -3,6 +3,7 @@ export interface UserListItens {
     name: string;
     email:string;
     role?:string;
+    photo?: string;
     status: boolean;
     createdAt: Date;
     updatedAt: Date;
@@ -11,6 +12,7 @@ export interface UserListItens {
 export interface UserCreation {
     name: string;
     email:string;
+    photo: string;
     password: string;
     passwordConfirmation:string;
 }
@@ -19,6 +21,7 @@ export interface UserCreation {
 export interface User {
     name: string;
     email:string;
+    photo: string;
     password: string;
     passwordConfirmation:string;
 }

@@ -35,6 +35,9 @@ export class User extends BaseEntity {
   @CreateDateColumn()
   createdAt: Date;
 
+  @Column({ nullable: true, type: 'varchar', length: 100 })
+  photo: string;
+
   @UpdateDateColumn()
   updatedAt: Date;
 

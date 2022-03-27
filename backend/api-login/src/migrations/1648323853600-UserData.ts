@@ -21,6 +21,7 @@ export class UserData1648323853600 implements MigrationInterface {
             password: await this.hashPassword(userTemp.password, userTemp.salt),
             role: 'ADMIN',
             status: true,
+            photo:'../../../../assets/img/Maryucha.png',
             salt: userTemp.salt,
             confirmationToken: crypto.randomBytes(32).toString('hex')
         }),

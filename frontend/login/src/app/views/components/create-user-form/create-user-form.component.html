@@ -1,0 +1,75 @@
+
+<div class="container column is-10">
+  <p class="title is-3 has-text-centered has-text-primary">Cadastro de Usuário</p>
+  <form [formGroup]="userForm" (ngSubmit)="salvar()">
+    <div class="field">
+      <div class="control has-icons-left has-icons-right">
+        <input class="input" formControlName="nameControl" type="text" placeholder="Username" required>
+        <span class="icon is-small is-left">
+          <i class="material-icons">person</i>
+        </span>
+      </div>
+      <p *ngIf="userForm.get('nameControl')?.errors &&
+              userForm.get('nameControl')?.touched" class="help is-success">This username is available</p>
+    </div>
+
+    <div class="field">
+      <div class="control has-icons-left has-icons-right">
+        <input class="input" formControlName="emailControl" type="email" placeholder="example@mail.com"
+          required>
+        <span class="icon is-small is-left">
+          <i class="material-icons">email</i>
+        </span>
+      </div>
+      <p *ngIf="userForm.get('emailControl')?.errors?.['email'] &&
+              userForm.get('emailControl')?.touched" class="help is-danger">This email is invalid</p>
+    </div>
+
+    <div class="field">
+      <div class="control has-icons-left has-icons-right">
+        <input class="input" formControlName="passwordControl" type="text"
+          placeholder="Please enter you password" required>
+        <span class="icon is-small is-left">
+          <i class="material-icons">lock</i>
+        </span>
+      </div>
+      <p *ngIf="userForm.get('passwordControl')?.errors &&
+              userForm.get('passwordControl')?.touched" class="help is-danger">Was password not confered</p>
+    </div>
+
+    <div class="field">
+      <div class="control has-icons-left has-icons-right">
+        <input class="input" formControlName="passwordConfirmationControl" type="text"
+          placeholder="Please comfirm password">
+        <span class="icon is-small is-left">
+          <i class="material-icons">lock</i>
+        </span>
+      </div>
+      <p *ngIf="userForm.get('passwordControl') === userForm.get('passwordConfirmationControl')"
+        class="help is-danger">Was password not confered</p>
+    </div>
+
+    <div class="field">
+      <div class="control has-icons-left has-icons-right">
+        <div class="file has-name">
+          <label class="file-label">
+            <input class="file-input" type="file" type="file" #UploadFileInput id="fileUpload"
+              (change)="upload($event)" name="fileUpload" multiple="multiple" accept="image/*" />
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="material-icons">upload</i>
+              </span>
+              <span class="file-label">
+                Choose a file…
+              </span>
+            </span>
+            <span class="file-name">
+              {{photo}}
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="button is-primary" [disabled]="!userForm.valid">SIGN UP</button>
+  </form>
+</div>

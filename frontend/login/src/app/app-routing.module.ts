@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './shared/components/error/error.component';
+import { LoginComponent } from './views/components/login/login.component';
 
 /**
  * This const represents all  this module
  */
 const routes: Routes = [
+  
   {
     path: '',
     loadChildren: () =>  import('./views/views.module').then((m) => m.ViewsModule)

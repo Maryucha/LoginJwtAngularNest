@@ -1,35 +1,58 @@
+<div class="list has-hoverable-list-items">
+    <h3 class="title is-3 has-text-primary mb-5 has-text-centered">LISTA DE USUÁRIOS</h3>
+    <table class="mb-5">
+        <tr>
+            <th class="has-text-centered">USER</th>
+            <th class="has-text-centered">NAME</th>
+            <th class="has-text-centered">E-MAIL</th>
+            <th class="has-text-centered">ROLE</th>
+            <th class="has-text-centered">STATUS</th>
+            <th class="has-text-centered">ACTIONS</th>
+        </tr>
+    </table>
+    <div class="list-item" *ngFor="let item of userList">
+        <div class="list-item-image">
+            <figure class="image is-64x64">
+                <img class="is-rounded" src={{item.photo}}>
+            </figure>
+        </div>
 
-    <div class="table-container">
-        <h2 class="title is-3 has-text-centered is-uppercase p-4">List Users</h2>
-        <table class="table is-hoverable is-fullwidth">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>E-mail</th>
-                    <th>Status</th>
-                    <th>Role</th>
-                    <th>Date Subscribed</th>
-                    <th>Date Update</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of userList">
-                    <td>{{item.name}}</td>
-                    <td>{{item.email}}</td>
-                    <td>{{item.status}}</td>
-                    <td>{{item.role}}</td>
-                    <td>{{item.createdAt | date:'d/LLL/Y'}}</td>
-                    <td>{{item.updatedAt | date:'d/LLL/Y'}}</td>
-                    <td class="controls" *ngIf="item.id">
-                        <button class="button is-success" type="submit">
-                            <i class="material-icons">edit</i>
-                            Editar</button>
-                        <button class="button is-danger" type="submit" (click)="remove(item.id)">
-                            <i class="material-icons">delete</i>Excluir</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
+        <div class="list-item-content">
+            <div class="list-item-title">{{item.name}}</div>
+        </div>
+        <div class="list-item-content">
+            <div class="list-item-description">{{item.email}}</div>
+        </div>
+        <div class="list-item-content">
+            <div class="list-item-description">{{item.role}}</div>
+        </div>
+        <div class="list-item-content">
+            <div class="list-item-description" *ngIf="item.status">
+                <span class="tag is-primary">
+                    on
+                </span>
+            </div>
+            <div class="list-item-description" *ngIf="!item.status">
+                <span class="tag is-danger">
+                    off
+                </span>
+            </div>
+        </div>
+
+        <div class="list-item-controls" *ngIf="item.id">
+            <div class="buttons is-right">
+                <button class="button is-success">
+                    <span class="icon is-small">
+                        <i class="material-icons">edit</i>
+                    </span>
+                    <span>Edit</span>
+                </button>
+
+                <button class="button is-danger" type="submit" (click)="remove(item.id)">
+                    <span class="icon is-small">
+                        <i class="material-icons">delete</i>
+                    </span>
+                </button>
+            </div>
+        </div>
     </div>

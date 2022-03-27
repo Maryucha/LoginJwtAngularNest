@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 })
 export class ContainerComponent implements OnInit {
 
+  public varList:boolean = true;
+  public varCreate:boolean = false;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -16,5 +19,16 @@ export class ContainerComponent implements OnInit {
   logOut() {
     localStorage.setItem('token','');
     this.router.navigate(['']);
+  }
+
+  novo() {
+    this.varList =false;
+
+    this.varCreate =true;
+  }
+  list() {
+    this.varList =true;
+
+    this.varCreate =false;
   }
 }
